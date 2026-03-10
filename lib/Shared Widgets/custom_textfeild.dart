@@ -25,9 +25,9 @@ class _CustomTextfeildState extends State<CustomTextfeild> {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 15.h),
       child: TextField(
-        obscureText: obseqcure,
+        obscureText: widget.passwordAble ? obseqcure : false,
         controller: widget.controller,
-        style: TextStyle(color: colors.primary),
+        style: TextStyle(color: colors.secondary),
         textDirection: TextDirection.rtl,
         decoration: InputDecoration(
           labelText: widget.title,

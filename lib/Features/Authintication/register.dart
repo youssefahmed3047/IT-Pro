@@ -4,21 +4,28 @@ import 'package:it_pro/Shared%20Widgets/custom_login_button.dart';
 import 'package:it_pro/Shared%20Widgets/custom_textfeild.dart';
 import 'package:it_pro/Shared%20Widgets/other_login_options.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   final GestureTapCallback navigation;
   const Register({super.key, required this.navigation});
 
   @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  bool isLoading = false ;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    TextEditingController nameController = TextEditingController();
     return Center(
       child: SizedBox(
         height: 1000.h,
         width: 1000.w,
         child: Card(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            padding: EdgeInsets.symmetric(horizontal: 40.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -38,7 +45,7 @@ class Register extends StatelessWidget {
                   passwordAble: false,
                 ),
                 CustomTextfeild(
-                  controller: nameController,
+                  controller: emailController,
                   title: 'أدخل بريدك الالكتروني',
                   icon: Icons.email,
                   passwordAble: false,
@@ -46,9 +53,12 @@ class Register extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomLoginButton(title: 'تسجيل الحساب'),
+                    SizedBox(width: 250.w,),
+                    CustomLoginButton(title: 'تسجيل الحساب', isLoading: isLoading, action: () => setState(() {
+                      isLoading = true ;
+                    }),),
                     GestureDetector(
-                      onTap: navigation,
+                      onTap: widget.navigation,
                       child: Text(
                         'لديك حساب بالفعل ؟',
                         style: TextStyle(
@@ -61,7 +71,7 @@ class Register extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 70.h,),
+                SizedBox(height: 70.h),
                 OtherLoginOptions(),
               ],
             ),

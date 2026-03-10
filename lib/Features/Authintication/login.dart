@@ -1,4 +1,3 @@
-import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:it_pro/Shared%20Widgets/custom_login_button.dart';
@@ -15,6 +14,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool isLoading = false ;
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
           width: 1000.w,
           child: Card(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 40.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -64,7 +64,11 @@ class _LoginState extends State<Login> {
                           decorationColor: colors.primary,
                         ),
                       ),
-                      CustomLoginButton(title: 'تسجيل الدخول'),
+                      Center(
+                        child: CustomLoginButton(title: 'تسجيل الدخول', isLoading: isLoading, action: () => setState(() {
+                          isLoading = true ;
+                        }),),
+                      ),
                       GestureDetector(
                         onTap: widget.navigation,
                         child: Text(

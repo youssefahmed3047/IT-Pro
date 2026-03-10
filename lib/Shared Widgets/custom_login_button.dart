@@ -3,25 +3,27 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomLoginButton extends StatelessWidget {
   final String title ;
-  const CustomLoginButton({super.key, required this.title});
+  final bool isLoading ;
+  final VoidCallback action;
+  const CustomLoginButton({super.key, required this.title, required this.isLoading, required this.action});
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Center(
       child: TextButton(
-        onPressed: () {},
+        onPressed: isLoading ? null : action,
         child: AnimatedContainer(
           duration: Duration(milliseconds: 500),
           curve: Curves.fastEaseInToSlowEaseOut,
-          width: 250.w,
-          height: 80.h,
+          width: isLoading ? 110.w :250.w,
+          height: isLoading ? 110.h : 80.h,
           decoration: BoxDecoration(
             color: colors.primary,
-            borderRadius: BorderRadius.circular(10.r),
+            borderRadius: BorderRadius.circular(isLoading ? 1000.r : 10.r ),
           ),
           child: Center(
-            child: Text(
+            child: isLoading ?  CircularProgressIndicator(color: colors.onPrimary, strokeWidth: 3,) : Text(
               title,
               style: TextStyle(
                 color: colors.onPrimary,

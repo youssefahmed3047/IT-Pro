@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: Size(1080, 2400),
       builder: (context, child) => MaterialApp(
-        title: 'IT PTO',
+        title: 'IT PRO',
         theme: Apptheme().appTheme(),
         home: Authintication(),
       ),
