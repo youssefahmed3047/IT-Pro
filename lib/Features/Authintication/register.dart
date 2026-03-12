@@ -42,13 +42,13 @@ class _RegisterState extends State<Register> {
                   controller: nameController,
                   title: 'أدخل اسمك بالكامل',
                   icon: Icons.person,
-                  passwordAble: false,
+                  passwordAble: false, action: null,
                 ),
                 CustomTextfeild(
                   controller: emailController,
                   title: 'أدخل بريدك الالكتروني',
                   icon: Icons.email,
-                  passwordAble: false,
+                  passwordAble: false, action: null,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

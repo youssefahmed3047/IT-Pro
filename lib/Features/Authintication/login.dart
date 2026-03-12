@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:it_pro/Features/home.dart/pages_center.dart';
 import 'package:it_pro/Shared%20Widgets/custom_login_button.dart';
 import 'package:it_pro/Shared%20Widgets/custom_textfeild.dart';
 import 'package:it_pro/Shared%20Widgets/other_login_options.dart';
@@ -14,7 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  bool isLoading = false ;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -43,13 +44,13 @@ class _LoginState extends State<Login> {
                     controller: emailController,
                     title: 'ادخل بريدك الالكتروني',
                     icon: Icons.email,
-                    passwordAble: false,
+                    passwordAble: false, action: null,
                   ),
                   CustomTextfeild(
                     controller: passwordController,
                     title: 'ادخل كلمة السر',
                     icon: Icons.password,
-                    passwordAble: true,
+                    passwordAble: true, action: null,
                   ),
                   SizedBox(height: 20.h),
                   Row(
@@ -65,9 +66,19 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       Center(
-                        child: CustomLoginButton(title: 'تسجيل الدخول', isLoading: isLoading, action: () => setState(() {
-                          isLoading = true ;
-                        }),),
+                        child: CustomLoginButton(
+                          title: 'تسجيل الدخول',
+                          isLoading: isLoading,
+                          action: () async {
+                            setState(() {
+                              isLoading = true;
+                            });
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => PagesCenter()),
+                            );
+                          },
+                        ),
                       ),
                       GestureDetector(
                         onTap: widget.navigation,

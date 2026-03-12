@@ -6,22 +6,28 @@ class CustomTextfeild extends StatefulWidget {
   final String title;
   final IconData icon;
   final bool passwordAble;
+  final Widget? action;
+
   const CustomTextfeild({
     super.key,
     required this.controller,
     required this.title,
     required this.icon,
     required this.passwordAble,
+    required this.action,
   });
+
   @override
   State<CustomTextfeild> createState() => _CustomTextfeildState();
 }
 
 class _CustomTextfeildState extends State<CustomTextfeild> {
   bool obseqcure = true;
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 15.h),
       child: TextField(
@@ -33,7 +39,8 @@ class _CustomTextfeildState extends State<CustomTextfeild> {
           labelText: widget.title,
           filled: true,
           fillColor: colors.onSurface.withValues(alpha: 0.2),
-          suffixIcon: Icon(widget.icon),
+
+          /// action button (يمين)
           prefixIcon: widget.passwordAble
               ? IconButton(
                   onPressed: () {
@@ -47,7 +54,11 @@ class _CustomTextfeildState extends State<CustomTextfeild> {
                         : Icons.visibility_sharp,
                   ),
                 )
-              : null,
+              : widget.action,
+
+          /// search icon (شمال)
+          suffixIcon: Icon(widget.icon),
+
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20.r),
             borderSide: BorderSide(color: colors.secondary),
