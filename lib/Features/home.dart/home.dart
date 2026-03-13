@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:it_pro/Shared Widgets/custom_textfeild.dart';
+import 'package:it_pro/Shared%20Widgets/item_card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -90,74 +91,12 @@ class _HomeState extends State<Home> {
               padding: EdgeInsets.symmetric(horizontal: 50.w),
               sliver: SliverGrid(
                 delegate: SliverChildBuilderDelegate(
-                  (context, index) => Padding(
-                    padding: EdgeInsets.all(20.w),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: colors.onSecondary,
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 200.h,
-                            decoration: BoxDecoration(
-                              color: colors.secondary,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20.r),
-                                topRight: Radius.circular(20.r),
-                              ),
-                            ),
-                            child: Icon(
-                              Icons.image,
-                              size: 90.sp,
-                              color: colors.onSecondary,
-                            ),
-                          ),
-
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  'المنتج رقم ${index + 1}',
-                                  style: TextStyle(
-                                    fontSize: 45.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: colors.secondary,
-                                  ),
-                                ),
-                                Text(
-                                  '200 ج.م',
-                                  style: TextStyle(
-                                    color: colors.secondary,
-                                    fontSize: 45.sp,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IconButton(onPressed: () {
-                                      
-                                    }, icon: Icon(Icons.add_shopping_cart)),
-                                    ...List.generate(5, (index) => Icon(Icons.star , size: 50.sp, color: Colors.amber,),),
-                                    ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  (context, index) => ItemCard(index: index, isFavorite: false,),
                   childCount: 20,
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 200.w / 205.h
+                  childAspectRatio: 200.w / 230.h
                 ),
               ),
             ),

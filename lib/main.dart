@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:it_pro/Core/app_theme.dart';
 import 'package:it_pro/Features/home.dart/pages_center.dart';
-
 void main() {
   runApp(const MyApp());
 }

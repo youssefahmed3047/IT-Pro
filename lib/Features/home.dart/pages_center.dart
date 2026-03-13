@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:it_pro/Features/home.dart/favorite_page.dart';
 import 'package:it_pro/Features/home.dart/home.dart';
+import 'package:it_pro/Features/home.dart/profile.dart';
 import 'package:it_pro/Features/home.dart/shopping_cart.dart';
 
 class PagesCenter extends StatefulWidget {
@@ -10,21 +12,19 @@ class PagesCenter extends StatefulWidget {
 
 class _PagesCenterState extends State<PagesCenter> {
   PageController pageController = PageController();
-  int currentIndex = 0 ;
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
         onPageChanged: (value) => setState(() {
-          currentIndex = value ;
+          currentIndex = value;
         }),
         controller: pageController,
-        children: [
-          Home(),
-          ShoppingCart()
-        ],
+        children: [Home(), ShoppingCart(), FavoritePage(), Profile()],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: (value) {
           pageController.animateToPage(
             value,
@@ -32,7 +32,7 @@ class _PagesCenterState extends State<PagesCenter> {
             curve: Curves.fastEaseInToSlowEaseOut,
           );
           setState(() {
-            currentIndex = value ;
+            currentIndex = value;
           });
         },
         currentIndex: currentIndex,
@@ -48,6 +48,11 @@ class _PagesCenterState extends State<PagesCenter> {
             icon: Icon(Icons.shopping_cart),
             label: 'عربة التسوق',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'المفضلات',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'حسابي'),
         ],
       ),
     );
