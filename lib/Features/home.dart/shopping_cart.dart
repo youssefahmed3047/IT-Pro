@@ -112,7 +112,9 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(width: 100.w),
+                                      SizedBox(width: 50.w,),
+                                      Container(width: 1, height: 100.h, color: colors.primary.withValues(alpha: 0.5)),
+                                      SizedBox(width: 50.w,),
                                       Column(
                                         children: [
                                           Text(
@@ -170,9 +172,5 @@ class _ShoppingCartState extends State<ShoppingCart> {
               ),
             ),
     );
-  }
-
-  Widget verticalDivder(Color color) {
-    return Container(width: 1, height: 100.h, color: color);
   }
 }

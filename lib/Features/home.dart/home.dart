@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:it_pro/Features/Authintication/product_details.dart';
 import 'package:it_pro/Shared Widgets/custom_textfeild.dart';
 import 'package:it_pro/Shared%20Widgets/item_card.dart';
 
@@ -28,7 +29,7 @@ class _HomeState extends State<Home> {
               centerTitle: true,
               leading: IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.message, size: 80.sp),
+                icon: Icon(Icons.notifications, size: 80.sp),
               ),
               title: CustomTextfeild(
                 controller: searchController,
@@ -91,12 +92,15 @@ class _HomeState extends State<Home> {
               padding: EdgeInsets.symmetric(horizontal: 50.w),
               sliver: SliverGrid(
                 delegate: SliverChildBuilderDelegate(
-                  (context, index) => ItemCard(index: index, isFavorite: false,),
+                  (context, index) =>
+                      ItemCard(index: index, isFavorite: false, action: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(),));
+                      }),
                   childCount: 20,
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 200.w / 230.h
+                  childAspectRatio: 200.w / 230.h,
                 ),
               ),
             ),

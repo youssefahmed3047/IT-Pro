@@ -44,13 +44,15 @@ class _LoginState extends State<Login> {
                     controller: emailController,
                     title: 'ادخل بريدك الالكتروني',
                     icon: Icons.email,
-                    passwordAble: false, action: null,
+                    passwordAble: false,
+                    action: null,
                   ),
                   CustomTextfeild(
                     controller: passwordController,
                     title: 'ادخل كلمة السر',
                     icon: Icons.password,
-                    passwordAble: true, action: null,
+                    passwordAble: true,
+                    action: null,
                   ),
                   SizedBox(height: 20.h),
                   Row(
@@ -75,7 +77,9 @@ class _LoginState extends State<Login> {
                             });
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => PagesCenter()),
+                              MaterialPageRoute(
+                                builder: (context) => PagesCenter(),
+                              ),
                             );
                           },
                         ),

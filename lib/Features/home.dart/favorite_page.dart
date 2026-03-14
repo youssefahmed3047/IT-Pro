@@ -45,7 +45,7 @@ class _FavoritePageState extends State<FavoritePage> {
                 childAspectRatio: 220.w / 230.h,
               ),
               itemBuilder: (context, index) =>
-                  ItemCard(index: index, isFavorite: true),
+                  ItemCard(index: index, isFavorite: true, action: () {  },),
             ),
     );
   }
