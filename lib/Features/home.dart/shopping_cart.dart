@@ -8,26 +8,26 @@ class ShoppingCart extends StatefulWidget {
 }
 
 class _ShoppingCartState extends State<ShoppingCart> {
-  List<Map<String, dynamic>> products = []; // [
-  //   {
-  //     'Product name': 'Playstation',
-  //     'Product price': 20000,
-  //     'Order date': '11 / 3 / 2026',
-  //     'Quantity': 1,
-  //   },
-  //   {
-  //     'Product name': 'Iphone',
-  //     'Product price': 40000,
-  //     'Order date': '5 / 2 / 2026',
-  //     'Quantity': 1,
-  //   },
-  //   {
-  //     'Product name': 'MacBook',
-  //     'Product price': 60000,
-  //     'Order date': '5 / 3 / 2026',
-  //     'Quantity': 2,
-  //   },
-  // ];
+  List<Map<String, dynamic>> products = [
+    {
+      'Product name': 'Playstation',
+      'Product price': 20000,
+      'Order date': '11 / 3 / 2026',
+      'Quantity': 1,
+    },
+    {
+      'Product name': 'Iphone',
+      'Product price': 40000,
+      'Order date': '5 / 2 / 2026',
+      'Quantity': 1,
+    },
+    {
+      'Product name': 'MacBook',
+      'Product price': 60000,
+      'Order date': '5 / 3 / 2026',
+      'Quantity': 2,
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -57,145 +57,118 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 ],
               ),
             )
-          : Stack(
-            children:[ Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40.w),
-                child: SingleChildScrollView(
-                  child: Center(
-                    child: Column(
-                      children: List.generate(
-                        products.length,
-                        (index) => Card(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                height: 250.h,
-                                decoration: BoxDecoration(
-                                  color: colors.primary,
-                                  borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(30.r),
-                                    topLeft: Radius.circular(30.r),
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40.w),
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Column(
+                    children: [
+                      Column(
+                        children: List.generate(
+                          products.length,
+                          (index) => Card(
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 300.w,
+                                  height: 300.h,
+                                  decoration: BoxDecoration(
+                                    color: colors.primary,
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(20.r),
+                                      topLeft: Radius.circular(20.r),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(height: 10.h),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 20.w,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SizedBox(
-                                      width: 300.w,
-                                      child: Column(
+                                SizedBox(width: 10.w),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 20.w,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 250.w,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              overflow: TextOverflow.ellipsis,
+                                              products[index]['Product name'],
+                                              style: TextStyle(
+                                                color: colors.secondary,
+                                                fontSize: 50.sp,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              "${products[index]['Product price']} ج.م",
+                                              style: TextStyle(
+                                                color: colors.secondary,
+                                                fontSize: 50.sp,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(width: 100.w),
+                                      Column(
                                         children: [
                                           Text(
-                                            overflow: TextOverflow.ellipsis,
-                                            products[index]['Product name'],
+                                            'الكمية المطلوبه',
                                             style: TextStyle(
                                               color: colors.secondary,
-                                              fontSize: 45.sp,
+                                              fontSize: 40.sp,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                           Text(
-                                            "${products[index]['Product price']} ج.م",
+                                            "${products[index]['Quantity']}",
                                             style: TextStyle(
                                               color: colors.secondary,
-                                              fontSize: 45.sp,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          SizedBox(height: 20.h),
+                                          Row(
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.add),
+                                                color: Colors.green,
+                                              ),
+                                              IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.minimize),
+                                                color: Colors.red,
+                                              ),
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                    ),
-                                    verticalDivder(colors.primary),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: colors.primary,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(20.r),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(
-                                              8.0,
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  "${products[index]['Quantity']}",
-                                                  style: TextStyle(
-                                                    fontSize: 60.sp,
-                                                    color: colors.secondary,
-                                                  ),
-                                                ),
-                                                Column(
-                                                  children: [
-                                                    IconButton(
-                                                      onPressed: () {},
-                                                      icon: Icon(
-                                                        Icons.add,
-                                                        size: 50.sp,
-                                                      ),
-                                                      color: Colors.green,
-                                                    ),
-                                                    IconButton(
-                                                      onPressed: () {},
-                                                      icon: Icon(
-                                                        Icons.minimize,
-                                                        size: 50.sp,
-                                                      ),
-                                                      color: Colors.red,
-                                                    ),
-                                                  ],
-                                                ),
-                                                Text(
-                                                  'الكمية المطلوبه',
-                                                  style: TextStyle(
-                                                    color: colors.secondary,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        ElevatedButton(
-                                          onPressed: () {},
-                                          child: Text('حذف من عربة التسوق'),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'تأكيد طلبك',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 50.sp,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-                Align(
-            alignment: Alignment.bottomCenter,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                'تأكيد طلبك',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50.sp),
-              ),
             ),
-          ),
-            ]
-          ),
     );
   }
 
