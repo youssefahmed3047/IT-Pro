@@ -115,7 +115,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
             ),
-            Divider()
+            Divider(),
           ],
         ),
       ),
